@@ -5,25 +5,38 @@ import tkinter.scrolledtext as tksc
 from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
-# Define a function to do a specied command
+# Define a function to run ping, tracert, and nslookup commands on a target site
 def do_command(command):
     global command_textbox, url_entry
 
-    # If url_entry is blank, use localhost IP address 
+    # Grab the url entry, format it, and set it to localhost if the user doesn't enter anything
     url_val = url_entry.get()
     if (len(url_val) == 0):
         # url_val = "127.0.0.1"
         url_val = "::1"
+    url_val = " " + str(url_val)
     
     command_textbox.delete(1.0, tk.END)
     command_textbox.insert(tk.END, command + " working....\n")
     command_textbox.update()
 
-    p = subprocess.Popen(command + ' ::1', stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
+    p = subprocess.Popen(command + url_val, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
 
     cmd_results, cmd_errors = p.communicate()
     command_textbox.insert(tk.END, cmd_results)
     command_textbox.insert(tk.END, cmd_errors)
+
+
+# Define a function to save the scrolling text widget output
+def mSave():
+    filename = asksaveasfilename(defaultextension='.txt',filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
+    if filename is None:
+        return
+    file = open (filename, mode = 'w')
+    text_to_save = command_textbox.get("1.0", tk.END)
+
+    file.write(text_to_save)
+    file.close()
 
 
 # Add a frame
