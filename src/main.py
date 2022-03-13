@@ -15,9 +15,17 @@ root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
 
-# Set up button to run the do_command function
-ping_btn = tk.Button(frame, text="ping", command=do_command)
+# Set up the ping button
+ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
 ping_btn.pack()
+
+# Set up the tracert button
+tracert_btn = tk.Button(frame, text="Check how long it takes to access that URL", command=lambda:do_command("tracert"))
+tracert_btn.pack()
+
+#Set up the nslookup button
+nslookup_btn = tk.Button(frame, text="See the site's IP address", command=lambda:do_command("nslookup"))
+nslookup_btn.pack()
 
 # Creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
@@ -35,6 +43,10 @@ url_label = tk.Label(frame_URL, text="Enter a URL of interest: ",
 url_label.pack(side=tk.LEFT)
 url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # Change font
 url_entry.pack(side=tk.LEFT)
+
+# Adds an output box to GUI.
+command_textbox = tksc.ScrolledText(frame, height=10, width=100)
+command_textbox.pack()
 
 frame = tk.Frame(root,  bg="black") # Change frame color
 frame.pack()
