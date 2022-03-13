@@ -59,6 +59,10 @@ tracert_btn.pack()
 nslookup_btn = tk.Button(frame, text="See the site's IP address", command=lambda:do_command("nslookup"))
 nslookup_btn.pack()
 
+# Add a button to save the outputted text in a specificed document
+save_btn = tk.Button(frame, text="Save output",command=lambda:mSave())
+save_btn.pack()
+
 # Creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
 frame_URL.pack()
@@ -75,6 +79,7 @@ url_label = tk.Label(frame_URL, text="Enter a URL of interest: ",
 url_label.pack(side=tk.LEFT)
 url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # Change font
 url_entry.pack(side=tk.LEFT)
+
 
 # Adds an output box to GUI.
 command_textbox = tksc.ScrolledText(frame, height=10, width=100)
