@@ -12,16 +12,19 @@ def do_command(command):
     # Grab the url entry, format it, and set it to localhost if the user doesn't enter anything
     url_val = url_entry.get()
     if (len(url_val) == 0):
-        # url_val = "127.0.0.1"
+        # 127.0.0.1 or localhost
         url_val = "::1"
-    url_val = " " + str(url_val)
+    url_val = " " + str(url_val) # Newly formatted string
     
+    # Inform the user the command is working
     command_textbox.delete(1.0, tk.END)
     command_textbox.insert(tk.END, command + " working....\n")
     command_textbox.update()
 
-    p = subprocess.Popen(command + url_val, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
+    # Run the inputted command based on the user's inputs
+    p = subprocess.Popen(command + url_val, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
+    # Get results and errors
     cmd_results, cmd_errors = p.communicate()
     command_textbox.insert(tk.END, cmd_results)
     command_textbox.insert(tk.END, cmd_errors)
@@ -77,6 +80,7 @@ url_entry.pack(side=tk.LEFT)
 command_textbox = tksc.ScrolledText(frame, height=10, width=100)
 command_textbox.pack()
 
+# Repack the frame
 frame = tk.Frame(root,  bg="black") # Change frame color
 frame.pack()
 
