@@ -7,7 +7,13 @@ from tkinter.filedialog import asksaveasfilename
 
 # Define a function to do a specied command
 def do_command(command):
-    global command_textbox
+    global command_textbox, url_entry
+
+    # If url_entry is blank, use localhost IP address 
+    url_val = url_entry.get()
+    if (len(url_val) == 0):
+        # url_val = "127.0.0.1"
+        url_val = "::1"
     
     command_textbox.delete(1.0, tk.END)
     command_textbox.insert(tk.END, command + " working....\n")
