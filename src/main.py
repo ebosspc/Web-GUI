@@ -70,7 +70,7 @@ frame_URL.pack()
 # Decorative label
 url_label = tk.Label(frame_URL, text="Enter a URL of interest: ", 
     compound="center",
-    font=("comic sans", 14),
+    font=("Times", 14),
     bd=0, 
     relief=tk.FLAT, 
     cursor="heart",
