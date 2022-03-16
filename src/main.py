@@ -12,7 +12,7 @@ def do_command(command):
     # Grab the url entry, format it, and set it to localhost if the user doesn't enter anything
     url_val = url_entry.get()
     if (len(url_val) == 0):
-        # 127.0.0.1 or localhost
+        # Set the url to localhost
         url_val = "::1"
     url_val = " " + str(url_val) # Newly formatted string
     
