@@ -41,9 +41,10 @@ def mSave():
     file.write(text_to_save)
     file.close()
 
-
 # Add a frame
 root = tk.Tk()
+root.wm_geometry("600x350") # Set the window size
+root.title('Website Commands GUI') # Set the window title
 frame = tk.Frame(root)
 frame.pack()
 
@@ -64,7 +65,7 @@ save_btn = tk.Button(frame, text="Save output",command=lambda:mSave())
 save_btn.pack()
 
 # Creates the frame with label for the text box
-frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+frame_URL = tk.Frame(root, pady=10,  bg="blue") # change frame color
 frame_URL.pack()
 
 # Decorative label
@@ -74,15 +75,15 @@ url_label = tk.Label(frame_URL, text="Enter a URL of interest: ",
     bd=0, 
     relief=tk.FLAT, 
     cursor="heart",
-    fg="mediumpurple3",
+    fg="white",
     bg="black")
 url_label.pack(side=tk.LEFT)
-url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # Change font
+url_entry= tk.Entry(frame_URL,  font=("Times", 14), foreground="Black",background="white") # Change font
 url_entry.pack(side=tk.LEFT)
 
 
 # Adds an output box to GUI.
-command_textbox = tksc.ScrolledText(frame, height=10, width=100)
+command_textbox = tksc.ScrolledText(frame, height=10, width=100, font="Times",foreground="Black",background="grey")
 command_textbox.pack()
 
 # Repack the frame
