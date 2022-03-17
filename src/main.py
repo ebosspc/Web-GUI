@@ -41,7 +41,7 @@ def mSave():
     file.write(text_to_save)
     file.close()
 
-# Add a frame
+# Create a window for the GUI
 root = tk.Tk()
 root.wm_geometry("600x350") # Set the window size
 root.title('Website Commands GUI') # Set the window title
